@@ -1,0 +1,17 @@
+version: '3'
+services:
+  server:
+    build: .
+    command: npm run start:dev
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    ports:
+      - 3000:3000
+    env_file: .env
+  postgres:
+    image: postgres:10-alpine
+    ports:
+      - 5432:5432
+    env_file: .env

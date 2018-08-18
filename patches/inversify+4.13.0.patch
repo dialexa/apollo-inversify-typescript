@@ -1,0 +1,24 @@
+patch-package
+--- a/node_modules/inversify/lib/container/container.js
++++ b/node_modules/inversify/lib/container/container.js
+@@ -211,7 +211,7 @@ var Container = (function () {
+         this._middleware = snapshot.middleware;
+     };
+     Container.prototype.createChild = function (containerOptions) {
+-        var child = new Container(containerOptions);
++        var child = new Container(containerOptions || this.options);
+         child.parent = this;
+         return child;
+     };
+@@ -245,9 +245,9 @@ var Container = (function () {
+         return this.getAllTagged(serviceIdentifier, METADATA_KEY.NAMED_TAG, named);
+     };
+     Container.prototype.resolve = function (constructorFunction) {
+-        var tempContainer = new Container();
++        var tempContainer = this.createChild();
+         tempContainer.bind(constructorFunction).toSelf();
+-        tempContainer.parent = this;
++
+         return tempContainer.get(constructorFunction);
+     };
+     Container.prototype._getContainerModuleHelpersFactory = function () {

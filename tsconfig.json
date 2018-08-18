@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es6", "esnext"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "dist",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node", "mocha", "chai"],
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@test/*": ["test/*"]
+    }
+  },
+  "include": ["index.ts", "db/seeds/**/*.ts", "src/**/*.ts", "test/**/*.spec.ts"],
+  "exclude": ["node_modules"]
+}
