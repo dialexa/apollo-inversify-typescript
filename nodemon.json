@@ -1,5 +1,5 @@
 {
   "ext": "ts",
   "watch": ["src"],
-  "exec": "yarn build && yarn start"
+  "exec": "node -r tsconfig-paths/register node_modules/.bin/ts-node index"
 }
